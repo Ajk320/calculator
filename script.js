@@ -22,7 +22,6 @@ buttons.forEach((button) => {
             }
         }
         else if (button.id === 'clear-button') {
-            console.log('clear button press');
             clearDisplay();
         }
     });
@@ -30,12 +29,27 @@ buttons.forEach((button) => {
 
 function evaluateExpression(expression) {
     const tokens = tokenizeInput(expression);
+    console.log(tokens);
+    //case of negative first number
+    let result = '';
+    let firstValueofI = 0;
+    if (tokens[0] === '-') {
+        console.log('negative first number');
+        result = 0 - parseFloat(tokens[1]);
+        firstValueofI = 2;
+    }
+    else {
+        console.log('positive first number');
+        result = parseFloat(tokens[0]);
+        firstValueofI = 1;
+    }
 
-    let result = parseFloat(tokens[0]);
-
-    for (let i = 1; i < tokens.length; i += 2) {
+    for (let i = firstValueofI; i < tokens.length; i += 2) {
         const operator = tokens[i];
         const nextNumber = parseFloat(tokens[i + 1]);
+
+
+
         switch (operator) {
             case '+':
                 result += nextNumber;
@@ -56,6 +70,10 @@ function evaluateExpression(expression) {
                 result /= nextNumber;
                 break;
 
+            case '%':
+                result = result * nextNumber / 100;
+                break;
+
             default:
                 throw new Error('Invalid operator');
 
@@ -64,7 +82,7 @@ function evaluateExpression(expression) {
     return result;
 }
 function tokenizeInput(input) {
-    const regex = /(\d+(\.\d+)?|\+|\-|\*|\/|\(|\))/g;
+    const regex = /(\d+(\.\d+)?|\+|\-|\*|\/|\%|\(|\))/g;
     return input.match(regex) || [];
 }
 function clearDisplay() {
