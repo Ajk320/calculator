@@ -4,9 +4,20 @@ let buttons = document.querySelectorAll("button");
 
 let display = document.getElementById('display');
 
+let signChangeButton = document.getElementById('signChangeButton');
+
+signChangeButton.addEventListener('click', function () {
+    if (displayValue !== '') {
+        console.log('working');
+        let currentNumber = parseFloat(displayValue);
+        displayValue = (currentNumber * -1).toString();
+        display.innerText = displayValue;
+    }
+});
+
 buttons.forEach((button) => {
     button.addEventListener('click', function () {
-        if (button.id !== 'equal-button' && button.id !== 'clear-button') {
+        if (button.id !== 'equal-button' && button.id !== 'clear-button' && button.id !== 'signChangeButton') {
             let buttonText = this.textContent;
             displayValue += buttonText;
             display.innerText = displayValue;
@@ -34,7 +45,6 @@ function evaluateExpression(expression) {
     let result = '';
     let firstValueofI = 0;
     if (tokens[0] === '-') {
-        console.log('negative first number');
         result = 0 - parseFloat(tokens[1]);
         firstValueofI = 2;
     }
