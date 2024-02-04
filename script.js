@@ -97,7 +97,7 @@ function tokenizeInput(input) {
 }
 function clearDisplay() {
     displayValue = '';
-    display.innerText = '';
+    display.innerText = 0;
 }
 
 
