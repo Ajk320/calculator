@@ -14,19 +14,26 @@ body {
 .calculator {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 35%;
     height: 100%;
-    border: 3px solid #ccc;
+    padding: 1px;
+    box-sizing: border-box;
 
 }
 
 #display {
     display: flex;
-    justify-content: end;
+    justify-content: right;
     align-items: center;
+    padding: 15px 0;
     width: 100%;
-    height: 50px;
-    border-bottom: 3px solid #ccc;
+    height: 80px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    color: #ccc;
+    background-color: #36474F;
+    border-radius: 15px 15px 0 0;
+
 }
 
 .first-row,
@@ -39,10 +46,39 @@ body {
 }
 
 button {
-    width: 25%;
-    height: 50px;
+    width: 25px;
+    height: 25px;
+    margin: 10px;
+    padding: 32px 32px;
+    font-size: 16px;
+    background-color: #18212A;
+    border: none;
+    color: #E5E5E5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #zero-button {
     width: 50%;
+}
+
+.buttonLayout {
+    background-color: #18212A;
+    border-radius: 0 0 15px 15px;
+}
+
+#divide-button,
+#multiply-button,
+#plus-button,
+#minus-button,
+#equal-button {
+    border-radius: 5px;
+    background-color: #E5E5E5;
+    color: black;
+    border-radius: 100%;
+}
+
+#equal-button {
+    background-color: #FF6430;
 }
